@@ -3,7 +3,7 @@ import { notFound } from "next/navigation";
 import type { Product } from "@/data/products";
 
 async function getProducts(): Promise<Product[]> {
-  const res = await fetch("http://localhost:5000/api/products");
+  const res = await fetch(`${process.env.API_URL ?? "http://localhost:5000"}/api/products`);
   if (!res.ok) throw new Error("Không tải được danh sách sản phẩm");
   return res.json();
 }

@@ -4,7 +4,7 @@ import { categoryLabels, type Product } from "@/data/products";
 
 // Phiên bản tạm: phần hero sẽ được thiết kế lại ở bước "home".
 export default async function Home() {
-  const res = await fetch("http://localhost:5000/api/products");
+  const res = await fetch(`${process.env.API_URL ?? "http://localhost:5000"}/api/products`);
   if (!res.ok) throw new Error("Không tải được danh sách sản phẩm");
   const products: Product[] = await res.json();
 
